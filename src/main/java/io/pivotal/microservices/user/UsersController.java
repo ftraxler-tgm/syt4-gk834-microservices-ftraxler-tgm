@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * A RESTFul controller for accessing user information.
- * 
+ *
  * @author Paul Chapman
  */
 @RestController
@@ -23,7 +23,7 @@ public class UsersController {
 
 	/**
 	 * Create an instance plugging in the respository of Users.
-	 * 
+	 *
 	 * @param userRepository
 	 *            An user repository implementation.
 	 */
@@ -37,7 +37,7 @@ public class UsersController {
 
 	/**
 	 * Fetch an user with the specified user number.
-	 * 
+	 *
 	 * @param userNumber
 	 *            A numeric, 9 digit user number.
 	 * @return The user if found.
@@ -62,7 +62,7 @@ public class UsersController {
 	 * Fetch user with the specified name. A partial case-insensitive match
 	 * is supported. So <code>http://.../users/owner/a</code> will find any
 	 * user with upper or lower case 'a' in their name.
-	 * 
+	 *
 	 * @param partialName
 	 * @return A non-null, non-empty set of user.
 	 * @throws UserNotFoundException

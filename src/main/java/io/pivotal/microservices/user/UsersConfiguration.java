@@ -19,7 +19,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
 /**
  * The user Spring configuration.
- * 
+ *
  * @author Paul Chapman
  */
 @Configuration
