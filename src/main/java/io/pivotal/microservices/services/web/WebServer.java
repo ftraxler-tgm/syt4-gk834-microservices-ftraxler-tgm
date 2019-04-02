@@ -9,11 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 /**
-<<<<<<< HEAD
  * Users web-server. Works as a microservice client, fetching data from the
-=======
- * Accounts web-server. Works as a microservice client, fetching data from the
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2
  * User-Service. Uses the Discovery Server (Eureka) to find the microservice.
  * 
  * @author Paul Chapman

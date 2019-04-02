@@ -49,19 +49,11 @@ public class WebUserService {
 				+ restTemplate.getRequestFactory().getClass());
 	}
 
-<<<<<<< HEAD:src/main/java/io/pivotal/microservices/services/web/WebUserService.java
 	public User findByNumber(String userNumber) {
 
 		logger.info("findByNumber() invoked: for " + userNumber);
 		return restTemplate.getForObject(serviceUrl + "/user/{number}",
 				User.class, userNumber);
-=======
-	public User findByNumber(String accountNumber) {
-
-		logger.info("findByNumber() invoked: for " + accountNumber);
-		return restTemplate.getForObject(serviceUrl + "/accounts/{number}",
-				User.class, accountNumber);
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/services/web/WebAccountsService.java
 	}
 
 	public List<User> byOwnerContains(String name) {
@@ -70,11 +62,7 @@ public class WebUserService {
 
 		try {
 			users = restTemplate.getForObject(serviceUrl
-<<<<<<< HEAD:src/main/java/io/pivotal/microservices/services/web/WebUserService.java
 					+ "/user/owner/{name}", User[].class, name);
-=======
-					+ "/users/owner/{name}", User[].class, name);
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/services/web/WebAccountsService.java
 		} catch (HttpClientErrorException e) { // 404
 			// Nothing found
 		}
@@ -85,21 +73,12 @@ public class WebUserService {
 			return Arrays.asList(users);
 	}
 
-<<<<<<< HEAD:src/main/java/io/pivotal/microservices/services/web/WebUserService.java
 	public User getByNumber(String userNumber) {
 		User user = restTemplate.getForObject(serviceUrl
 				+ "/user/{number}", User.class, userNumber);
 
 		if (user == null)
 			throw new UserNotFoundException(userNumber);
-=======
-	public User getByNumber(String accountNumber) {
-		User user = restTemplate.getForObject(serviceUrl
-				+ "/accounts/{number}", User.class, accountNumber);
-
-		if (user == null)
-			throw new AccountNotFoundException(accountNumber);
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/services/web/WebAccountsService.java
 		else
 			return user;
 	}

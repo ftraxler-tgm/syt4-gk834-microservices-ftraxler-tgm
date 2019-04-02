@@ -27,19 +27,11 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 @EntityScan("io.pivotal.microservices.user")
 @EnableJpaRepositories("io.pivotal.microservices.user")
 @PropertySource("classpath:db-config.properties")
-<<<<<<< HEAD:src/main/java/io/pivotal/microservices/user/UsersConfiguration.java
 public class UsersConfiguration {
 
 	protected Logger logger;
 
 	public UsersConfiguration() {
-=======
-public class UserConfiguration {
-
-	protected Logger logger;
-
-	public UserConfiguration() {
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/user/UserConfiguration.java
 		logger = Logger.getLogger(getClass().getName());
 	}
 

@@ -32,25 +32,15 @@ public class SearchCriteria {
 	}
 
 	public boolean validate(Errors errors) {
-<<<<<<< HEAD
 		if (StringUtils.hasText(userNumber)) {
 			if (userNumber.length() != 9)
 				errors.rejectValue("userNumber", "badFormat",
-=======
-		if (StringUtils.hasText(accountNumber)) {
-			if (accountNumber.length() != 9)
-				errors.rejectValue("accountNumber", "badFormat",
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2
 						"User number should be 9 digits");
 			else {
 				try {
 					Integer.parseInt(userNumber);
 				} catch (NumberFormatException e) {
-<<<<<<< HEAD
 					errors.rejectValue("userNumber", "badFormat",
-=======
-					errors.rejectValue("accountNumber", "badFormat",
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2
 							"User number should be 9 digits");
 				}
 			}

@@ -15,11 +15,7 @@ import javax.persistence.Table;
  * @author Paul Chapman
  */
 @Entity
-<<<<<<< HEAD:src/main/java/io/pivotal/microservices/user/User.java
 @Table(name = "T_User")
-=======
-@Table(name = "T_ACCOUNT")
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/user/User.java
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -50,13 +46,8 @@ public class User implements Serializable {
 	/**
 	 * Default constructor for JPA only.
 	 */
-<<<<<<< HEAD:src/main/java/io/pivotal/microservices/user/User.java
 	public User() {
 
-=======
-	protected User() {
-		balance = BigDecimal.ZERO;
->>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/user/User.java
 	}
 
 	public User(String number, String owner) {
