@@ -1,0 +1,22 @@
+
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456789', 'Keri Lee','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456001', 'Dollie R. Schnidt','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456002', 'Cornelia J. LeClerc','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456003', 'Cynthia Rau','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456004', 'Douglas R. Cobbs','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456005', 'Michael Patel','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456006', 'Suzanne Wong','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456007', 'Ivan C. Jaya','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456008', 'Ida Ketterer','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456009', 'Laina Ochoa Lucero','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456010', 'Wesley M. Montana','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456011', 'Leslie F. McCleary','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456012', 'Sayeed D. Mudra','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456013', 'Pietronella J. Domingo','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456014', 'John S. O''Leary','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456015', 'Gladys D. Smith','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456016', 'Sally O. Thygesen','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456017', 'Rachel Vogt','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456018', 'Julia DeLong','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456019', 'Mark T. Rizzoli','1234');
+insert into USER (NUMBER, NAME, PASSWORD) values ('123456020', 'Maria J. Angelo','1234');
