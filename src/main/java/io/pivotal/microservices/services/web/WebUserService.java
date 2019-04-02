@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import io.pivotal.microservices.exceptions.AccountNotFoundException;
+import io.pivotal.microservices.exceptions.UserNotFoundException;
 
 /**
  * Hide the access to the microservice inside this local service.
@@ -20,7 +20,7 @@ import io.pivotal.microservices.exceptions.AccountNotFoundException;
  * @author Paul Chapman
  */
 @Service
-public class WebAccountsService {
+public class WebUserService {
 
 	@Autowired
 	@LoadBalanced
@@ -28,10 +28,10 @@ public class WebAccountsService {
 
 	protected String serviceUrl;
 
-	protected Logger logger = Logger.getLogger(WebAccountsService.class
+	protected Logger logger = Logger.getLogger(WebUserService.class
 			.getName());
 
-	public WebAccountsService(String serviceUrl) {
+	public WebUserService(String serviceUrl) {
 		this.serviceUrl = serviceUrl.startsWith("http") ? serviceUrl
 				: "http://" + serviceUrl;
 	}
@@ -49,37 +49,37 @@ public class WebAccountsService {
 				+ restTemplate.getRequestFactory().getClass());
 	}
 
-	public Account findByNumber(String accountNumber) {
+	public User findByNumber(String userNumber) {
 
-		logger.info("findByNumber() invoked: for " + accountNumber);
-		return restTemplate.getForObject(serviceUrl + "/accounts/{number}",
-				Account.class, accountNumber);
+		logger.info("findByNumber() invoked: for " + userNumber);
+		return restTemplate.getForObject(serviceUrl + "/user/{number}",
+				User.class, userNumber);
 	}
 
-	public List<Account> byOwnerContains(String name) {
+	public List<User> byOwnerContains(String name) {
 		logger.info("byOwnerContains() invoked:  for " + name);
-		Account[] accounts = null;
+		User[] users = null;
 
 		try {
-			accounts = restTemplate.getForObject(serviceUrl
-					+ "/accounts/owner/{name}", Account[].class, name);
+			users = restTemplate.getForObject(serviceUrl
+					+ "/user/owner/{name}", User[].class, name);
 		} catch (HttpClientErrorException e) { // 404
 			// Nothing found
 		}
 
-		if (accounts == null || accounts.length == 0)
+		if (users == null || users.length == 0)
 			return null;
 		else
-			return Arrays.asList(accounts);
+			return Arrays.asList(users);
 	}
 
-	public Account getByNumber(String accountNumber) {
-		Account account = restTemplate.getForObject(serviceUrl
-				+ "/accounts/{number}", Account.class, accountNumber);
+	public User getByNumber(String userNumber) {
+		User user = restTemplate.getForObject(serviceUrl
+				+ "/user/{number}", User.class, userNumber);
 
-		if (account == null)
-			throw new AccountNotFoundException(accountNumber);
+		if (user == null)
+			throw new UserNotFoundException(userNumber);
 		else
-			return account;
+			return user;
 	}
 }

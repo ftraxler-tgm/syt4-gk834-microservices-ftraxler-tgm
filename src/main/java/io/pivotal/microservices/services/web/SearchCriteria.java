@@ -4,16 +4,16 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 
 public class SearchCriteria {
-	private String accountNumber;
+	private String userNumber;
 
 	private String searchText;
 
-	public String getAccountNumber() {
-		return accountNumber;
+	public String getUserNumber() {
+		return userNumber;
 	}
 
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setUserNumber(String userNumber) {
+		this.userNumber = userNumber;
 	}
 
 	public String getSearchText() {
@@ -25,35 +25,35 @@ public class SearchCriteria {
 	}
 
 	public boolean isValid() {
-		if (StringUtils.hasText(accountNumber))
+		if (StringUtils.hasText(userNumber))
 			return !(StringUtils.hasText(searchText));
 		else
 			return (StringUtils.hasText(searchText));
 	}
 
 	public boolean validate(Errors errors) {
-		if (StringUtils.hasText(accountNumber)) {
-			if (accountNumber.length() != 9)
-				errors.rejectValue("accountNumber", "badFormat",
-						"Account number should be 9 digits");
+		if (StringUtils.hasText(userNumber)) {
+			if (userNumber.length() != 9)
+				errors.rejectValue("userNumber", "badFormat",
+						"User number should be 9 digits");
 			else {
 				try {
-					Integer.parseInt(accountNumber);
+					Integer.parseInt(userNumber);
 				} catch (NumberFormatException e) {
-					errors.rejectValue("accountNumber", "badFormat",
-							"Account number should be 9 digits");
+					errors.rejectValue("userNumber", "badFormat",
+							"User number should be 9 digits");
 				}
 			}
 
 			if (StringUtils.hasText(searchText)) {
 				errors.rejectValue("searchText", "nonEmpty",
-						"Cannot specify account number and search text");
+						"Cannot specify user number and search text");
 			}
 		} else if (StringUtils.hasText(searchText)) {
 			; // Nothing to do
 		} else {
-			errors.rejectValue("accountNumber", "nonEmpty",
-					"Must specify either an account number or search text");
+			errors.rejectValue("userNumber", "nonEmpty",
+					"Must specify either an user number or search text");
 
 		}
 
@@ -63,7 +63,7 @@ public class SearchCriteria {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return (StringUtils.hasText(accountNumber) ? "number: " + accountNumber
+		return (StringUtils.hasText(userNumber) ? "number: " + userNumber
 				: "")
 				+ (StringUtils.hasText(searchText) ? " text: " + searchText
 						: "");
