@@ -28,7 +28,10 @@ public class User implements Serializable {
 	protected String number;
 
 	@Column(name = "name")
-	protected String owner;
+	protected String name;
+
+	@Column(name="password")
+	protected String password;
 
 	/**
 	 * This is a very simple, and non-scalable solution to generating unique
@@ -50,10 +53,11 @@ public class User implements Serializable {
 
 	}
 
-	public User(String number, String owner) {
+	public User(String number, String owner,String password) {
 		id = getNextId();
 		this.number = number;
-		this.owner = owner;
+		this.name = owner;
+		this.password=password;
 	}
 
 	public long getId() {
@@ -78,19 +82,28 @@ public class User implements Serializable {
 		this.number = userNumber;
 	}
 
-	public String getOwner() {
-		return owner;
+	public String getName() {
+		return name;
 	}
 
-	protected void setOwner(String owner) {
-		this.owner = owner;
+	protected void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+	protected void setPassword(String password) {
+		this.password = password;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return number + " [" + owner + "]:";
+		return number + " [" + name + "]:";
 	}
 
 }

@@ -27,7 +27,7 @@ public interface UserRepository extends Repository<User, Long> {
 	 * @return The list of matching user - always non-null, but may be
 	 *         empty.
 	 */
-	public List<User> findByOwnerContainingIgnoreCase(String partialName);
+	public List<User> findByNameContainingIgnoreCase(String partialName);
 
 	/**
 	 * Fetch the number of user known to the system.

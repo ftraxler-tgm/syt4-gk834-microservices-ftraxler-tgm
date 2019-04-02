@@ -56,13 +56,13 @@ public class WebUserService {
 				User.class, userNumber);
 	}
 
-	public List<User> byOwnerContains(String name) {
+	public List<User> byNameContains(String name) {
 		logger.info("byOwnerContains() invoked:  for " + name);
 		User[] users = null;
 
 		try {
 			users = restTemplate.getForObject(serviceUrl
-					+ "/user/owner/{name}", User[].class, name);
+					+ "/user/{name}", User[].class, name);
 		} catch (HttpClientErrorException e) { // 404
 			// Nothing found
 		}

@@ -68,14 +68,14 @@ public class UsersController {
 	 * @throws UserNotFoundException
 	 *             If there are no matches at all.
 	 */
-	@RequestMapping("/users/owner/{name}")
-	public List<User> byOwner(@PathVariable("name") String partialName) {
+	@RequestMapping("/users/{name}")
+	public List<User> byName(@PathVariable("name") String partialName) {
 		logger.info("user-service byOwner() invoked: "
 				+ userRepository.getClass().getName() + " for "
 				+ partialName);
 
 		List<User> users = userRepository
-				.findByOwnerContainingIgnoreCase(partialName);
+				.findByNameContainingIgnoreCase(partialName);
 		logger.info("user-service byOwner() found: " + users);
 
 		if (users == null || users.size() == 0)

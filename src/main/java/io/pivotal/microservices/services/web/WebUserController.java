@@ -43,23 +43,12 @@ public class WebUserController {
 		return "index";
 	}
 
-	@RequestMapping("/users/{userNumber}")
-	public String byNumber(Model model,
-			@PathVariable("userNumber") String userNumber) {
 
-		logger.info("web-service byNumber() invoked: " + userNumber);
-
-		User user = usersService.findByNumber(userNumber);
-		logger.info("web-service byNumber() found: " + user);
-		model.addAttribute("user", user);
-		return "user";
-	}
-
-	@RequestMapping("/users/owner/{text}")
+	@RequestMapping("/user/{text}")
 	public String ownerSearch(Model model, @PathVariable("text") String name) {
 		logger.info("web-service byOwner() invoked: " + name);
 
-		List<User> users = usersService.byOwnerContains(name);
+		List<User> users = usersService.byNameContains(name);
 		logger.info("web-service byOwner() found: " + users);
 		model.addAttribute("search", name);
 		if (users != null)
@@ -73,22 +62,5 @@ public class WebUserController {
 		return "userSearch";
 	}
 
-	@RequestMapping(value = "/users/dosearch")
-	public String doSearch(Model model, SearchCriteria criteria,
-			BindingResult result) {
-		logger.info("web-service search() invoked: " + criteria);
 
-		criteria.validate(result);
-
-		if (result.hasErrors())
-			return "userSearch";
-
-		String userNumber = criteria.getUserNumber();
-		if (StringUtils.hasText(userNumber)) {
-			return byNumber(model, userNumber);
-		} else {
-			String searchText = criteria.getSearchText();
-			return ownerSearch(model, searchText);
-		}
-	}
 }
