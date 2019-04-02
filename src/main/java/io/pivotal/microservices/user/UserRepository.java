@@ -1,4 +1,4 @@
-package io.pivotal.microservices.user;
+package io.pivotal.microservices.accounts;
 
 import java.util.List;
 
@@ -12,28 +12,28 @@ import org.springframework.data.repository.Repository;
  */
 public interface UserRepository extends Repository<User, Long> {
 	/**
-	 * Find an user with the specified user number.
+	 * Find an account with the specified account number.
 	 *
-	 * @param userNumber
-	 * @return The user if found, null otherwise.
+	 * @param accountNumber
+	 * @return The account if found, null otherwise.
 	 */
-	public User findByNumber(String userNumber);
+	public User findByNumber(String accountNumber);
 
 	/**
-	 * Find user whose owner name contains the specified string
+	 * Find accounts whose owner name contains the specified string
 	 * 
 	 * @param partialName
 	 *            Any alphabetic string.
-	 * @return The list of matching user - always non-null, but may be
+	 * @return The list of matching accounts - always non-null, but may be
 	 *         empty.
 	 */
 	public List<User> findByOwnerContainingIgnoreCase(String partialName);
 
 	/**
-	 * Fetch the number of user known to the system.
+	 * Fetch the number of accounts known to the system.
 	 * 
-	 * @return The number of user.
+	 * @return The number of accounts.
 	 */
-	@Query("SELECT count(id) from User")
-	public int countUsers();
+	@Query("SELECT count(*) from User")
+	public int countAccounts();
 }

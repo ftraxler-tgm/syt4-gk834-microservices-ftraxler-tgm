@@ -13,6 +13,17 @@ Die detaillierte [Aufgabenstellung](TASK.md) beschreibt die notwendigen Schritte
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+>>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2
 # microservices-demo
 
 Demo application to go with my [Microservices Blog](https://spring.io/blog/2015/07/14/microservices-with-spring) on the spring.io website.  **WARNING:** Only maven build has been updated.  Gradle build still to be done.
@@ -53,7 +64,11 @@ You may find it easier to view the different applications by running them from a
 For convenience we are building a 'fat' executble jar whose start-class (main method entry-point) is defined to be in the class `io.pivotal.microservices.services.Main`.  This application expects a single command-line argument that tells it to run as any of our three servers.
 
 ```
+<<<<<<< HEAD
 java -jar target/microservices-demo-2.0.0.RELEASE.jar registration|accounts|web
+=======
+java -jar target/microservices-demo-2.0.0.RELEASE.jar registration|users|web
+>>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2
 ```
 
 ### Priocedure
@@ -64,17 +79,30 @@ To run the microservices system from the command-line, open three CMD windows (W
  1. In the first window, build the application using either `mvn clean package` or `gradle clean assemble`.  Either way the
     generated file will be `target/microservices-demo-2.0.0.RELEASE.jar` (even if you used gradle).
  1. In the same window run: `java -jar target/microservices-demo-2.0.0.RELEASE.jar registration`
+<<<<<<< HEAD
  1. Switch to the second window and run: `java -jar target/microservices-demo-2.0.0.RELEASE.jar accounts`
+=======
+ 1. Switch to the second window and run: `java -jar target/microservices-demo-2.0.0.RELEASE.jar users`
+>>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2
  1. In the third window run: `java -jar target/microservices-demo-2.0.0.RELEASE.jar web`
  1. In your favorite browser open the same two links: [http://localhost:1111](http://localhost:1111) and [http://localhost:3333](http://localhost:3333)
 
 You should see servers being registered in the log output of the first (registration) window.
 As you interact wiht the Web application, you should logging in the both the second and third windows.
 
+<<<<<<< HEAD
 For a list of valid accounts refer to the [data.sql](https://github.com/paulc4/microservices-demo/blob/master/src/main/resources/testdb/data.sql) that is used by the Account Service to set them up.
 
  1. In a new window, run up a second account-server using HTTP port 2223:
      * `java -jar target/microservices-demo-2.0.0.RELEASE.jar accounts 2223`
  1. Allow it to register itself
  1. Kill the first account-server and see the web-server switch to using the new account-server - no loss of service.
+=======
+For a list of valid users refer to the [data.sql](https://github.com/paulc4/microservices-demo/blob/master/src/main/resources/testdb/data.sql) that is used by the Account Service to set them up.
+
+ 1. In a new window, run up a second user-server using HTTP port 2223:
+     * `java -jar target/microservices-demo-2.0.0.RELEASE.jar users 2223`
+ 1. Allow it to register itself
+ 1. Kill the first user-server and see the web-server switch to using the new user-server - no loss of service.
+>>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2
 

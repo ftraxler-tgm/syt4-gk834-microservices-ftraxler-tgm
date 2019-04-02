@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Client controller, fetches User info from the microservice via
+<<<<<<< HEAD:src/main/java/io/pivotal/microservices/services/web/WebUserController.java
  * {@link WebUserService}.
+=======
+ * {@link WebAccountsService}.
+>>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/services/web/WebAccountsController.java
  * 
  * @author Paul Chapman
  */
@@ -49,9 +53,15 @@ public class WebUserController {
 
 		logger.info("web-service byNumber() invoked: " + userNumber);
 
+<<<<<<< HEAD:src/main/java/io/pivotal/microservices/services/web/WebUserController.java
 		User user = usersService.findByNumber(userNumber);
 		logger.info("web-service byNumber() found: " + user);
 		model.addAttribute("user", user);
+=======
+		User user = accountsService.findByNumber(accountNumber);
+		logger.info("web-service byNumber() found: " + user);
+		model.addAttribute("account", user);
+>>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/services/web/WebAccountsController.java
 		return "user";
 	}
 
@@ -59,12 +69,21 @@ public class WebUserController {
 	public String ownerSearch(Model model, @PathVariable("text") String name) {
 		logger.info("web-service byOwner() invoked: " + name);
 
+<<<<<<< HEAD:src/main/java/io/pivotal/microservices/services/web/WebUserController.java
 		List<User> users = usersService.byOwnerContains(name);
 		logger.info("web-service byOwner() found: " + users);
 		model.addAttribute("search", name);
 		if (users != null)
 			model.addAttribute("users", users);
 		return "user";
+=======
+		List<User> users = accountsService.byOwnerContains(name);
+		logger.info("web-service byOwner() found: " + users);
+		model.addAttribute("search", name);
+		if (users != null)
+			model.addAttribute("accounts", users);
+		return "users";
+>>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/services/web/WebAccountsController.java
 	}
 
 	@RequestMapping(value = "/users/search", method = RequestMethod.GET)

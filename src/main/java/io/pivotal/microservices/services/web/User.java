@@ -5,7 +5,11 @@ import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 /**
+<<<<<<< HEAD:src/main/java/io/pivotal/microservices/services/web/User.java
  * User DTO - used to interact with the {@link WebUserService}.
+=======
+ * User DTO - used to interact with the {@link WebAccountsService}.
+>>>>>>> 82d1aca89fbada94304afc599ec1c0e8ca21bad2:src/main/java/io/pivotal/microservices/services/web/User.java
  * 
  * @author Paul Chapman
  */
