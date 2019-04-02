@@ -49,37 +49,37 @@ public class WebAccountsService {
 				+ restTemplate.getRequestFactory().getClass());
 	}
 
-	public Account findByNumber(String accountNumber) {
+	public User findByNumber(String accountNumber) {
 
 		logger.info("findByNumber() invoked: for " + accountNumber);
 		return restTemplate.getForObject(serviceUrl + "/accounts/{number}",
-				Account.class, accountNumber);
+				User.class, accountNumber);
 	}
 
-	public List<Account> byOwnerContains(String name) {
+	public List<User> byOwnerContains(String name) {
 		logger.info("byOwnerContains() invoked:  for " + name);
-		Account[] accounts = null;
+		User[] users = null;
 
 		try {
-			accounts = restTemplate.getForObject(serviceUrl
-					+ "/accounts/owner/{name}", Account[].class, name);
+			users = restTemplate.getForObject(serviceUrl
+					+ "/users/owner/{name}", User[].class, name);
 		} catch (HttpClientErrorException e) { // 404
 			// Nothing found
 		}
 
-		if (accounts == null || accounts.length == 0)
+		if (users == null || users.length == 0)
 			return null;
 		else
-			return Arrays.asList(accounts);
+			return Arrays.asList(users);
 	}
 
-	public Account getByNumber(String accountNumber) {
-		Account account = restTemplate.getForObject(serviceUrl
-				+ "/accounts/{number}", Account.class, accountNumber);
+	public User getByNumber(String accountNumber) {
+		User user = restTemplate.getForObject(serviceUrl
+				+ "/accounts/{number}", User.class, accountNumber);
 
-		if (account == null)
+		if (user == null)
 			throw new AccountNotFoundException(accountNumber);
 		else
-			return account;
+			return user;
 	}
 }

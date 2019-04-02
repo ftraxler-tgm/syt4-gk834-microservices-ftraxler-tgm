@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * Accounts web-server. Works as a microservice client, fetching data from the
- * Account-Service. Uses the Discovery Server (Eureka) to find the microservice.
+ * User-Service. Uses the Discovery Server (Eureka) to find the microservice.
  * 
  * @author Paul Chapman
  */

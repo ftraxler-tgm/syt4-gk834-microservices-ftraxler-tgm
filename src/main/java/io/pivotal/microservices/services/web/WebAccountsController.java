@@ -1,7 +1,5 @@
 package io.pivotal.microservices.services.web;
 
-import io.pivotal.microservices.services.web.Account;
-
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Client controller, fetches Account info from the microservice via
+ * Client controller, fetches User info from the microservice via
  * {@link WebAccountsService}.
  * 
  * @author Paul Chapman
@@ -51,22 +49,22 @@ public class WebAccountsController {
 
 		logger.info("web-service byNumber() invoked: " + accountNumber);
 
-		Account account = accountsService.findByNumber(accountNumber);
-		logger.info("web-service byNumber() found: " + account);
-		model.addAttribute("account", account);
-		return "account";
+		User user = accountsService.findByNumber(accountNumber);
+		logger.info("web-service byNumber() found: " + user);
+		model.addAttribute("account", user);
+		return "user";
 	}
 
 	@RequestMapping("/accounts/owner/{text}")
 	public String ownerSearch(Model model, @PathVariable("text") String name) {
 		logger.info("web-service byOwner() invoked: " + name);
 
-		List<Account> accounts = accountsService.byOwnerContains(name);
-		logger.info("web-service byOwner() found: " + accounts);
+		List<User> users = accountsService.byOwnerContains(name);
+		logger.info("web-service byOwner() found: " + users);
 		model.addAttribute("search", name);
-		if (accounts != null)
-			model.addAttribute("accounts", accounts);
-		return "accounts";
+		if (users != null)
+			model.addAttribute("accounts", users);
+		return "users";
 	}
 
 	@RequestMapping(value = "/accounts/search", method = RequestMethod.GET)

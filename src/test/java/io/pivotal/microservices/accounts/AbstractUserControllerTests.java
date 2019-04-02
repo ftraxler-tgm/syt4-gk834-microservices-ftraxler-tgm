@@ -17,67 +17,67 @@ import io.pivotal.microservices.exceptions.AccountNotFoundException;
 
 // 2. Define test properties directly, acceptable here since we only have one.
 // @TestPropertySource(properties={"eureka.client.enabled=false"})
-public abstract class AbstractAccountControllerTests {
+public abstract class AbstractUserControllerTests {
 
 	protected static final String ACCOUNT_1 = "123456789";
 	protected static final String ACCOUNT_1_NAME = "Keri Lee";
 
 	@Autowired
-	AccountsController accountController;
+	UserController accountController;
 
 	@Test
 	public void validAccountNumber() {
 		Logger.getGlobal().info("Start validAccountNumber test");
-		Account account = accountController.byNumber(ACCOUNT_1);
+		User user = accountController.byNumber(ACCOUNT_1);
 
-		Assert.assertNotNull(account);
-		Assert.assertEquals(ACCOUNT_1, account.getNumber());
-		Assert.assertEquals(ACCOUNT_1_NAME, account.getOwner());
+		Assert.assertNotNull(user);
+		Assert.assertEquals(ACCOUNT_1, user.getNumber());
+		Assert.assertEquals(ACCOUNT_1_NAME, user.getOwner());
 		Logger.getGlobal().info("End validAccount test");
 	}
 
 	@Test
 	public void validAccountOwner() {
 		Logger.getGlobal().info("Start validAccount test");
-		List<Account> accounts = accountController.byOwner(ACCOUNT_1_NAME);
+		List<User> users = accountController.byOwner(ACCOUNT_1_NAME);
 		Logger.getGlobal().info("In validAccount test");
 
-		Assert.assertNotNull(accounts);
-		Assert.assertEquals(1, accounts.size());
+		Assert.assertNotNull(users);
+		Assert.assertEquals(1, users.size());
 
-		Account account = accounts.get(0);
-		Assert.assertEquals(ACCOUNT_1, account.getNumber());
-		Assert.assertEquals(ACCOUNT_1_NAME, account.getOwner());
+		User user = users.get(0);
+		Assert.assertEquals(ACCOUNT_1, user.getNumber());
+		Assert.assertEquals(ACCOUNT_1_NAME, user.getOwner());
 		Logger.getGlobal().info("End validAccount test");
 	}
 
 	@Test
 	public void validAccountOwnerMatches1() {
 		Logger.getGlobal().info("Start validAccount test");
-		List<Account> accounts = accountController.byOwner("Keri");
+		List<User> users = accountController.byOwner("Keri");
 		Logger.getGlobal().info("In validAccount test");
 
-		Assert.assertNotNull(accounts);
-		Assert.assertEquals(1, accounts.size());
+		Assert.assertNotNull(users);
+		Assert.assertEquals(1, users.size());
 
-		Account account = accounts.get(0);
-		Assert.assertEquals(ACCOUNT_1, account.getNumber());
-		Assert.assertEquals(ACCOUNT_1_NAME, account.getOwner());
+		User user = users.get(0);
+		Assert.assertEquals(ACCOUNT_1, user.getNumber());
+		Assert.assertEquals(ACCOUNT_1_NAME, user.getOwner());
 		Logger.getGlobal().info("End validAccount test");
 	}
 
 	@Test
 	public void validAccountOwnerMatches2() {
 		Logger.getGlobal().info("Start validAccount test");
-		List<Account> accounts = accountController.byOwner("keri");
+		List<User> users = accountController.byOwner("keri");
 		Logger.getGlobal().info("In validAccount test");
 
-		Assert.assertNotNull(accounts);
-		Assert.assertEquals(1, accounts.size());
+		Assert.assertNotNull(users);
+		Assert.assertEquals(1, users.size());
 
-		Account account = accounts.get(0);
-		Assert.assertEquals(ACCOUNT_1, account.getNumber());
-		Assert.assertEquals(ACCOUNT_1_NAME, account.getOwner());
+		User user = users.get(0);
+		Assert.assertEquals(ACCOUNT_1, user.getNumber());
+		Assert.assertEquals(ACCOUNT_1_NAME, user.getOwner());
 		Logger.getGlobal().info("End validAccount test");
 	}
 

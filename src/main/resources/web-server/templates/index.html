@@ -9,9 +9,9 @@
 	<h1>Microservices Demo - Web Server</h1>
 	<h3>Overview</h3>
 	<ul>
-		<li>Demo defines a simple web-application for accessing accounts
+		<li>Demo defines a simple web-application for accessing users
 			data.</li>
-		<li>All the account information is fetched via a RESTful
+		<li>All the user information is fetched via a RESTful
 			interface to a Accounts microservice.</li>
 	</ul>
 
@@ -22,11 +22,11 @@
 			href="http://localhost:1111">http://localhost:1111</a></li>
 		<li>Check applications registered: <a
 			href="http://localhost:1111/eureka/apps/">http://localhost:1111/eureka/apps/</a></li>
-		<li>Fetch account #123456789: <a th:href="@{/accounts/123456789}">/accounts/123456789</a></li>
+		<li>Fetch user #123456789: <a th:href="@{/users/123456789}">/users/123456789</a></li>
 
-		<li>Fetch by name: <a th:href="@{/accounts/owner/Keri}">/accounts/owner/Keri</a></li>
+		<li>Fetch by name: <a th:href="@{/users/owner/Keri}">/users/owner/Keri</a></li>
 
-		<li>Account <a th:href="@{/accounts/search}">Search</a></li>
+		<li>Account <a th:href="@{/users/search}">Search</a></li>
 	</ul>
 
 	<h3>Spring Boot URLs</h3>
@@ -38,7 +38,7 @@
 		<li><a th:href="@{/actuator/env}">The environment</a></li>
 		<li><a th:href="@{/actuator/health}">Application health</a></li>
 		<li><a th:href="@{/actuator/mappings}">URL Mappings</a> - including
-		     the /account mappings</li>
+		     the /user mappings</li>
 		<li><a th:href="@{/actuator/metrics}">Application metrics</a> - add any 
 		     metric name to the end of this URL, for example 
 		     <a th:href="@{/actuator/metrics/http.server.requests}">/actuator/metrics/http.server.requests</a></li>

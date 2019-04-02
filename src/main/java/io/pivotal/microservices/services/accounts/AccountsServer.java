@@ -8,14 +8,14 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Import;
 
-import io.pivotal.microservices.accounts.AccountRepository;
-import io.pivotal.microservices.accounts.AccountsConfiguration;
+import io.pivotal.microservices.accounts.UserRepository;
+import io.pivotal.microservices.accounts.UserConfiguration;
 
 /**
  * Run as a micro-service, registering with the Discovery Server (Eureka).
  * <p>
  * Note that the configuration for this application is imported from
- * {@link AccountsConfiguration}. This is a deliberate separation of concerns.
+ * {@link UserConfiguration}. This is a deliberate separation of concerns.
  * <p>
  * This class declares no beans and current package contains no components for
  * ComponentScan to find. No point using <tt>@SptingBootApplication</tt>.
@@ -24,11 +24,11 @@ import io.pivotal.microservices.accounts.AccountsConfiguration;
  */
 @EnableAutoConfiguration
 @EnableDiscoveryClient
-@Import(AccountsConfiguration.class)
+@Import(UserConfiguration.class)
 public class AccountsServer {
 
 	@Autowired
-	protected AccountRepository accountRepository;
+	protected UserRepository userRepository;
 
 	protected Logger logger = Logger.getLogger(AccountsServer.class.getName());
 

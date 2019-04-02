@@ -16,24 +16,24 @@ import io.pivotal.microservices.exceptions.AccountNotFoundException;
  * @author Paul Chapman
  */
 @RestController
-public class AccountsController {
+public class UserController {
 
-	protected Logger logger = Logger.getLogger(AccountsController.class
+	protected Logger logger = Logger.getLogger(UserController.class
 			.getName());
-	protected AccountRepository accountRepository;
+	protected UserRepository userRepository;
 
 	/**
 	 * Create an instance plugging in the respository of Accounts.
 	 * 
-	 * @param accountRepository
+	 * @param userRepository
 	 *            An account repository implementation.
 	 */
 	@Autowired
-	public AccountsController(AccountRepository accountRepository) {
-		this.accountRepository = accountRepository;
+	public UserController(UserRepository userRepository) {
+		this.userRepository = userRepository;
 
-		logger.info("AccountRepository says system has "
-				+ accountRepository.countAccounts() + " accounts");
+		logger.info("UserRepository says system has "
+				+ userRepository.countAccounts() + " accounts");
 	}
 
 	/**
@@ -46,16 +46,16 @@ public class AccountsController {
 	 *             If the number is not recognised.
 	 */
 	@RequestMapping("/accounts/{accountNumber}")
-	public Account byNumber(@PathVariable("accountNumber") String accountNumber) {
+	public User byNumber(@PathVariable("accountNumber") String accountNumber) {
 
 		logger.info("accounts-service byNumber() invoked: " + accountNumber);
-		Account account = accountRepository.findByNumber(accountNumber);
-		logger.info("accounts-service byNumber() found: " + account);
+		User user = userRepository.findByNumber(accountNumber);
+		logger.info("accounts-service byNumber() found: " + user);
 
-		if (account == null)
+		if (user == null)
 			throw new AccountNotFoundException(accountNumber);
 		else {
-			return account;
+			return user;
 		}
 	}
 
@@ -70,19 +70,19 @@ public class AccountsController {
 	 *             If there are no matches at all.
 	 */
 	@RequestMapping("/accounts/owner/{name}")
-	public List<Account> byOwner(@PathVariable("name") String partialName) {
-		logger.info("accounts-service byOwner() invoked: "
-				+ accountRepository.getClass().getName() + " for "
+	public List<User> byOwner(@PathVariable("name") String partialName) {
+		logger.info("users-service byOwner() invoked: "
+				+ userRepository.getClass().getName() + " for "
 				+ partialName);
 
-		List<Account> accounts = accountRepository
+		List<User> users = userRepository
 				.findByOwnerContainingIgnoreCase(partialName);
-		logger.info("accounts-service byOwner() found: " + accounts);
+		logger.info("users-service byOwner() found: " + users);
 
-		if (accounts == null || accounts.size() == 0)
+		if (users == null || users.size() == 0)
 			throw new AccountNotFoundException(partialName);
 		else {
-			return accounts;
+			return users;
 		}
 	}
 }

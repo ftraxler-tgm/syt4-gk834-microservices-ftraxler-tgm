@@ -28,11 +28,11 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 @EntityScan("io.pivotal.microservices.accounts")
 @EnableJpaRepositories("io.pivotal.microservices.accounts")
 @PropertySource("classpath:db-config.properties")
-public class AccountsConfiguration {
+public class UserConfiguration {
 
 	protected Logger logger;
 
-	public AccountsConfiguration() {
+	public UserConfiguration() {
 		logger = Logger.getLogger(getClass().getName());
 	}
 

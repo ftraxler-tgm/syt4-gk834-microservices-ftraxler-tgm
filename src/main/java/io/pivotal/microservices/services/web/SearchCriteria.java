@@ -35,13 +35,13 @@ public class SearchCriteria {
 		if (StringUtils.hasText(accountNumber)) {
 			if (accountNumber.length() != 9)
 				errors.rejectValue("accountNumber", "badFormat",
-						"Account number should be 9 digits");
+						"User number should be 9 digits");
 			else {
 				try {
 					Integer.parseInt(accountNumber);
 				} catch (NumberFormatException e) {
 					errors.rejectValue("accountNumber", "badFormat",
-							"Account number should be 9 digits");
+							"User number should be 9 digits");
 				}
 			}
 

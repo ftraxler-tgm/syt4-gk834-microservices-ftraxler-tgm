@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "T_ACCOUNT")
-public class Account implements Serializable {
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,11 +48,11 @@ public class Account implements Serializable {
 	/**
 	 * Default constructor for JPA only.
 	 */
-	protected Account() {
+	protected User() {
 		balance = BigDecimal.ZERO;
 	}
 
-	public Account(String number, String owner) {
+	public User(String number, String owner) {
 		id = getNextId();
 		this.number = number;
 		this.owner = owner;
