@@ -35,28 +35,6 @@ public class UsersController {
 				+ userRepository.countUsers() + " user");
 	}
 
-	/**
-	 * Fetch an user with the specified user number.
-	 *
-	 * @param userNumber
-	 *            A numeric, 9 digit user number.
-	 * @return The user if found.
-	 * @throws UserNotFoundException
-	 *             If the number is not recognised.
-	 */
-	@RequestMapping("/users/{userNumber}")
-	public User byNumber(@PathVariable("userNumber") String userNumber) {
-
-		logger.info("user-service byNumber() invoked: " + userNumber);
-		User user = userRepository.findByNumber(userNumber);
-		logger.info("user-service byNumber() found: " + user);
-
-		if (user == null)
-			throw new UserNotFoundException(userNumber);
-		else {
-			return user;
-		}
-	}
 
 	/**
 	 * Fetch user with the specified name. A partial case-insensitive match
@@ -70,13 +48,12 @@ public class UsersController {
 	 */
 	@RequestMapping("/users/{name}")
 	public List<User> byName(@PathVariable("name") String partialName) {
-		logger.info("user-service byOwner() invoked: "
+		logger.info("user-service byName() invoked: "
 				+ userRepository.getClass().getName() + " for "
 				+ partialName);
 
-		List<User> users = userRepository
-				.findByNameContainingIgnoreCase(partialName);
-		logger.info("user-service byOwner() found: " + users);
+		List<User> users = userRepository.findByNameContainingIgnoreCase(partialName);
+		logger.info("user-service byName() found: " + users);
 
 		if (users == null || users.size() == 0)
 			throw new UserNotFoundException(partialName);
@@ -84,4 +61,5 @@ public class UsersController {
 			return users;
 		}
 	}
+
 }

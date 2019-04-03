@@ -49,20 +49,13 @@ public class WebUserService {
 				+ restTemplate.getRequestFactory().getClass());
 	}
 
-	public User findByNumber(String userNumber) {
-
-		logger.info("findByNumber() invoked: for " + userNumber);
-		return restTemplate.getForObject(serviceUrl + "/user/{number}",
-				User.class, userNumber);
-	}
 
 	public List<User> byNameContains(String name) {
-		logger.info("byOwnerContains() invoked:  for " + name);
+		logger.info("byNameContains() invoked:  for " + name);
 		User[] users = null;
-
+        logger.info("checking under "+serviceUrl);
 		try {
-			users = restTemplate.getForObject(serviceUrl
-					+ "/user/{name}", User[].class, name);
+			users = restTemplate.getForObject(serviceUrl+"/users/{name}", User[].class, name);
 		} catch (HttpClientErrorException e) { // 404
 			// Nothing found
 		}
@@ -73,13 +66,4 @@ public class WebUserService {
 			return Arrays.asList(users);
 	}
 
-	public User getByNumber(String userNumber) {
-		User user = restTemplate.getForObject(serviceUrl
-				+ "/user/{number}", User.class, userNumber);
-
-		if (user == null)
-			throw new UserNotFoundException(userNumber);
-		else
-			return user;
-	}
 }

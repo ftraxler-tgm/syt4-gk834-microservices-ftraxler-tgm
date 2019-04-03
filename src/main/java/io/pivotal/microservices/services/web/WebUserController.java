@@ -44,22 +44,16 @@ public class WebUserController {
 	}
 
 
-	@RequestMapping("/user/{text}")
+	@RequestMapping("/users/{text}")
 	public String ownerSearch(Model model, @PathVariable("text") String name) {
-		logger.info("web-service byOwner() invoked: " + name);
+		logger.info("web-service byName() invoked: " + name);
 
 		List<User> users = usersService.byNameContains(name);
-		logger.info("web-service byOwner() found: " + users);
+		logger.info("web-service byName() found: " + users);
 		model.addAttribute("search", name);
 		if (users != null)
 			model.addAttribute("users", users);
 		return "user";
-	}
-
-	@RequestMapping(value = "/users/search", method = RequestMethod.GET)
-	public String searchForm(Model model) {
-		model.addAttribute("searchCriteria", new SearchCriteria());
-		return "userSearch";
 	}
 
 
