@@ -25,10 +25,18 @@ public class User implements Serializable {
 	@Id
 	protected Long id;
 
-	protected String number;
 
-	@Column(name = "name")
-	protected String name;
+	@Column(name = "FNAME")
+	protected String fname;
+
+	@Column(name = "LNAME")
+	protected String lname;
+
+	@Column(name = "ROLE")
+	protected String role;
+
+
+
 
 	@Column(name="password")
 	protected String password;
@@ -53,10 +61,13 @@ public class User implements Serializable {
 
 	}
 
-	public User(String number, String owner,String password) {
+
+
+	public User(String number, String fname, String lname, String role, String password) {
 		id = getNextId();
-		this.number = number;
-		this.name = owner;
+		this.fname = fname;
+		this.lname = lname;
+		this.role = role;
 		this.password=password;
 	}
 
@@ -74,20 +85,28 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getNumber() {
-		return number;
+
+	public String getFName() {
+		return fname;
 	}
 
-	protected void setNumber(String userNumber) {
-		this.number = userNumber;
+	protected void setFName(String name) {
+		this.fname = name;
 	}
 
-	public String getName() {
-		return name;
+	public String getLName() {
+		return lname;
 	}
 
-	protected void setName(String name) {
-		this.name = name;
+	protected void setLName(String name) {
+		this.lname = name;
+	}
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 
@@ -103,7 +122,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return number + " [" + name + "]:";
+		return " [" + fname + "]:";
 	}
 
 }

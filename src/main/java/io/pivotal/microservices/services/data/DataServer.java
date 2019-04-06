@@ -29,10 +29,10 @@ public class DataServer {
      */
     public static void main(String[] args) {
         // Tell server to look for user-server.properties or
-        // user-server.yml
+        // data-server.yml
         System.setProperty("spring.config.name", "data-server");
 
-        SpringApplication.run(UserServer.class, args);
+        SpringApplication.run(DataServer.class, args);
     }
 
 }

@@ -17,7 +17,7 @@ public interface UserRepository extends Repository<User, Long> {
 	 * @param userNumber
 	 * @return The user if found, null otherwise.
 	 */
-	public User findByNumber(String userNumber);
+	public User findById(String userNumber);
 
 	/**
 	 * Find user whose owner name contains the specified string
@@ -27,7 +27,7 @@ public interface UserRepository extends Repository<User, Long> {
 	 * @return The list of matching user - always non-null, but may be
 	 *         empty.
 	 */
-	public List<User> findByNameContainingIgnoreCase(String partialName);
+	public List<User> findByfnameContainingIgnoreCase(String partialName);
 
 	/**
 	 * Fetch the number of user known to the system.

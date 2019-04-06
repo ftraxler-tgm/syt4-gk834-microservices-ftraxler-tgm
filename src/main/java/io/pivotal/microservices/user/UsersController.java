@@ -52,7 +52,7 @@ public class UsersController {
 				+ userRepository.getClass().getName() + " for "
 				+ partialName);
 
-		List<User> users = userRepository.findByNameContainingIgnoreCase(partialName);
+		List<User> users = userRepository.findByfnameContainingIgnoreCase(partialName);
 		logger.info("user-service byName() found: " + users);
 
 		if (users == null || users.size() == 0)
