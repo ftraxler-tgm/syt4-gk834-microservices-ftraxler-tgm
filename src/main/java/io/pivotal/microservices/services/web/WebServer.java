@@ -23,7 +23,7 @@ public class WebServer {
 	 * URL uses the logical name of user-service - upper or lower case,
 	 * doesn't matter.
 	 */
-	public static final String UserS_SERVICE_URL = "http://UserS-SERVICE";
+	public static final String UserS_SERVICE_URL = "http://USERS-SERVICE";
 
 	/**
 	 * Run the application using Spring Boot and an embedded servlet engine.
@@ -56,6 +56,7 @@ public class WebServer {
 	 */
 	@Bean
 	public WebUserService usersService() {
+
 		return new WebUserService(UserS_SERVICE_URL);
 	}
 

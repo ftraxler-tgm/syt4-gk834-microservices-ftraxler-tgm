@@ -56,7 +56,8 @@ public class WebUserService {
         logger.info("checking under "+serviceUrl);
 		try {
 			users = restTemplate.getForObject(serviceUrl+"/users/{name}", User[].class, name);
-		} catch (HttpClientErrorException e) { // 404
+		} catch (HttpClientErrorException e) {
+			// 404
 			// Nothing found
 		}
 

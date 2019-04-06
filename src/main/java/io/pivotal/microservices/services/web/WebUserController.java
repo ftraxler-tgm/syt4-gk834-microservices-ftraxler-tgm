@@ -44,11 +44,14 @@ public class WebUserController {
 	}
 
 
-	@RequestMapping("/users/{text}")
-	public String ownerSearch(Model model, @PathVariable("text") String name) {
+	@RequestMapping("/users/{name}")
+	public String ownerSearch(Model model, @PathVariable("name") String name) {
 		logger.info("web-service byName() invoked: " + name);
 
 		List<User> users = usersService.byNameContains(name);
+
+
+
 		logger.info("web-service byName() found: " + users);
 		model.addAttribute("search", name);
 		if (users != null)
