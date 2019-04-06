@@ -1,8 +1,12 @@
 package io.pivotal.microservices.services.data;
 
 import io.pivotal.microservices.services.user.UserServer;
+import io.pivotal.microservices.user.UsersConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.Import;
 
 import java.util.logging.Logger;
 
@@ -11,6 +15,8 @@ import java.util.logging.Logger;
  * @version 2019-04-06
  * @project microservices-demo
  */
+@EnableAutoConfiguration
+@EnableDiscoveryClient
 public class DataServer {
 
 

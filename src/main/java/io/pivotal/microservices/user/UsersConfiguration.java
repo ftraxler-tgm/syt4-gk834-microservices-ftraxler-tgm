@@ -52,7 +52,7 @@ public class UsersConfiguration {
 
 		// Sanity check
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		List<Map<String, Object>> users = jdbcTemplate.queryForList("SELECT number FROM T_User");
+		List<Map<String, Object>> users = jdbcTemplate.queryForList("SELECT fname FROM T_User");
 		logger.info("System has " + users.size() + " user");
 
 
