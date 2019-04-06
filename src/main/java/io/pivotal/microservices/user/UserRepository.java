@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 
 /**
- * Repository for User data implemented using Spring Data JPA.
+ * Repository for User data implemented using Spring DataServer JPA.
  * 
  * @author Paul Chapman
  */
