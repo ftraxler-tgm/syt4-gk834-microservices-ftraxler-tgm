@@ -31,7 +31,7 @@ public class UsersController {
 	public UsersController(UserRepository userRepository) {
 		this.userRepository = userRepository;
 
-		logger.info("UserRepository says system has "
+		logger.info("DataRepository says system has "
 				+ userRepository.countUsers() + " user");
 	}
 

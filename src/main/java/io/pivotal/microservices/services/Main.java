@@ -2,7 +2,7 @@ package io.pivotal.microservices.services;
 
 import io.pivotal.microservices.services.user.UserServer;
 import io.pivotal.microservices.services.registration.RegistrationServer;
-import io.pivotal.microservices.services.web.WebServer;
+import io.pivotal.microservices.services.data.DataServer;
 
 /**
  * Allow the servers to be invoked from the command-line. The jar is built with
@@ -37,7 +37,7 @@ public class Main {
 		} else if (serverName.equals("user")) {
 			UserServer.main(args);
 		} else if (serverName.equals("web")) {
-			WebServer.main(args);
+			DataServer.main(args);
 		} else {
 			System.out.println("Unknown server type: " + serverName);
 			usage();
@@ -47,6 +47,6 @@ public class Main {
 	protected static void usage() {
 		System.out.println("Usage: java -jar ... <server-name> [server-port]");
 		System.out.println(
-				"     where server-name is 'reg', 'registration', " + "'user' or 'web' and server-port > 1024");
+				"     where server-name is 'reg', 'registration', " + "'user' or 'data' and server-port > 1024");
 	}
 }

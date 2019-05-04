@@ -36,7 +36,7 @@ repositories {
 dependencies {
 
     compile 'org.springframework.boot:spring-boot-starter:' + springBootVersion,
-            'org.springframework.boot:spring-boot-starter-web:' + springBootVersion,
+            'org.springframework.boot:spring-boot-starter-data:' + springBootVersion,
             'org.springframework.boot:spring-boot-starter-thymeleaf:' + springBootVersion,
             'org.springframework.data:spring-data-commons:' + springDataCommonsVersion,
             'org.springframework.boot:spring-boot-starter-test:' + springBootVersion,
