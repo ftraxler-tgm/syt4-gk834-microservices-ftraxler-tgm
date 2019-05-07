@@ -1,13 +1,18 @@
-package io.pivotal.microservices.user;
+package io.pivotal.microservices.services.user;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 import io.pivotal.microservices.exceptions.UserNotFoundException;
+import io.pivotal.microservices.user.User;
+import io.pivotal.microservices.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  * A RESTFul controller for accessing user information.
@@ -59,7 +64,28 @@ public class UsersController {
 			throw new UserNotFoundException(partialName);
 		else {
 			return users;
+		}ar
+
+	}
+	@RequestMapping("/users/{name}/{password}")
+	public RedirectView localRedirect(@PathVariable("name") String partialName, @PathVariable("password")String password) {
+		RedirectView redirectView = new RedirectView();
+
+		logger.info("user-service byName() invoked: "
+				+ userRepository.getClass().getName() + " for "
+				+ partialName+ "and" + password);
+		List<User> users=userRepository.findByfnameContainingIgnoreCase(partialName);
+		for (User u:users) {
+			if(u.getPassword().equals(password)){
+				logger.info("Correct password entered");
+				redirectView.setUrl("http://localhost:3333/abfrage");
+			}else{
+				logger.info("Password not correct!");
+			}
+
 		}
+		redirectView.setUrl("http://localhost:2222/error");
+		return redirectView;
 	}
 
 }
