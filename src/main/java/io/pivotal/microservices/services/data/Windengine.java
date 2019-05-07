@@ -1,4 +1,4 @@
-package io.pivotal.microservices.data;
+package io.pivotal.microservices.services.data;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,13 +1,8 @@
 package io.pivotal.microservices.services.data;
 
-import io.pivotal.microservices.data.WindengineRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-
-import java.util.logging.Logger;
 
 /**
  * Users data-server. Works as a microservice client, fetching data from the

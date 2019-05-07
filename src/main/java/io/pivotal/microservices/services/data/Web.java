@@ -1,4 +1,4 @@
-package io.pivotal.microservices.data;
+package io.pivotal.microservices.services.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

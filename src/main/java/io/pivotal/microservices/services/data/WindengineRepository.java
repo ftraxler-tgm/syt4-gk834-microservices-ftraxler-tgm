@@ -1,4 +1,4 @@
-package io.pivotal.microservices.data;
+package io.pivotal.microservices.services.data;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;

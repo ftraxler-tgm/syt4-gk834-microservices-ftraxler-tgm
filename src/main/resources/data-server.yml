@@ -13,8 +13,10 @@ spring:
     cache: false       # Allow Thymeleaf templates to be reloaded at runtime
     prefix: classpath:/data-server/templates/    # Trailing / mandatory
                          # Template location for this application only
-  datasource:
-    uri=mongodb://localhost:32768/windengine:
+  data:
+    mongodb:
+      host: localhost
+      port: 32768
 
 # Map the error path to error template (for Thymeleaf)
 error.path: /error
