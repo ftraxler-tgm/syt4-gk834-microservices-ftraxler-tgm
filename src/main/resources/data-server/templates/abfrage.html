@@ -12,23 +12,18 @@
 <th>Power</th>
 <th>Blindpower</th>
 <th>Rotationpower</th>
-<th></th>
+<th>Bladeposition</th>
 </tr>
  <tr th:each="windengine: ${windengines}">
         <td th:text="${windengine.windengineID}">1</td>
         <td th:text="${windengine.timestamp}">dfgkdf</td>
         <td th:text="${windengine.parkrechnerID}">2</td>
-        <td th:text="${windengine.windspeed}">25</td>
-        <td th:text="${windengine.unitWindspeed}">km/h</td>
-        <td th:text="${windengine.temperature}">25</td>
-        <td th:text="${windengine.power}">33</td>
-        <td th:text="${windengine.unitPower}">W</td>
-        <td th:text="${windengine.blindpower}">2342</td>
-        <td th:text="${windengine.unitBlindpower}">sdfsd</td>
-        <td th:text="${windengine.rotationspeed}">123</td>
-        <td th:text="${windengine.unitRotationspeed}">dsfsdf</td>
-        <td th:text="${windengine.bladeposition}">34</td>
-        <td th:text="${windengine.unitBladeposition}">sdfgsdfg</td>
+        <td th:text="${windengine.windspeed}+' '+${windengine.unitWindspeed}">25</td>
+        <td th:text="${windengine.temperature}+' '+${windengine.unitTemperature}">25</td>
+        <td th:text="${windengine.power}+' '+${windengine.unitPower}">33</td>
+        <td th:text="${windengine.blindpower}+' '+${windengine.unitBlindpower}">2342</td>
+        <td th:text="${windengine.rotationspeed}+' '+${windengine.unitRotationspeed}">123</td>
+        <td th:text="${windengine.bladeposition}+' '+${windengine.unitBladeposition}">34</td>
  </tr>
 </table>
 <div th:replace="footer :: copy"></div>
