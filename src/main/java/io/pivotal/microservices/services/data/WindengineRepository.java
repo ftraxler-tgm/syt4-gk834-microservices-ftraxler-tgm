@@ -13,6 +13,8 @@ import java.util.List;
  */
 public interface WindengineRepository extends MongoRepository<Windengine, String> {
 
+    public List<Windengine> findAll();
+
     public List<Windengine> findWindengineByWindengineID(String windengineID);
 
     public List<Windengine> findWindengineByTimestampAfterAndWindspeedGreaterThanAndPowerLessThan(Date timestamp, double windspeed, double power);

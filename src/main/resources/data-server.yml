@@ -13,10 +13,6 @@ spring:
     cache: false       # Allow Thymeleaf templates to be reloaded at runtime
     prefix: classpath:/data-server/templates/    # Trailing / mandatory
                          # Template location for this application only
-  data:
-    mongodb:
-      host: localhost
-      port: 32768
 
 # Map the error path to error template (for Thymeleaf)
 error.path: /error

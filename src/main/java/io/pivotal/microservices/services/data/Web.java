@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -29,17 +30,18 @@ public class Web {
         logger.info("Abfrage called");
 
         output = "Error";
+        List<Windengine> windengines;
 
         try {
-            output =r.findWindengineByTimestampAfterAndWindspeedGreaterThanAndPowerLessThan(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2019-03-12 11:00"),50.0,100.0).toString();
-            System.out.println(output);
+            windengines =r.findWindengineByTimestampAfterAndWindspeedGreaterThanAndPowerLessThan(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2019-03-25 11:00"),50.0,100.0);
+            model.addAttribute("windengines",windengines);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
 
         model.addAttribute("output", output);
-        return "index";
+        return "abfrage";
     }
 
 

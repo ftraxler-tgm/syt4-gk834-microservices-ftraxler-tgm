@@ -1,10 +1,36 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+<head th:replace="header :: copy"></head>
 <body>
-<p th:text="${output}" />
+<table class="table table-striped">
+<tr>
+<th>ID</th>
+<th>Timestamp</th>
+<th>ParkrechnerID</th>
+<th>Windspeed</th>
+<th>temperature</th>
+<th>Power</th>
+<th>Blindpower</th>
+<th>Rotationpower</th>
+<th></th>
+</tr>
+ <tr th:each="windengine: ${windengines}">
+        <td th:text="${windengine.windengineID}">1</td>
+        <td th:text="${windengine.timestamp}">dfgkdf</td>
+        <td th:text="${windengine.parkrechnerID}">2</td>
+        <td th:text="${windengine.windspeed}">25</td>
+        <td th:text="${windengine.unitWindspeed}">km/h</td>
+        <td th:text="${windengine.temperature}">25</td>
+        <td th:text="${windengine.power}">33</td>
+        <td th:text="${windengine.unitPower}">W</td>
+        <td th:text="${windengine.blindpower}">2342</td>
+        <td th:text="${windengine.unitBlindpower}">sdfsd</td>
+        <td th:text="${windengine.rotationspeed}">123</td>
+        <td th:text="${windengine.unitRotationspeed}">dsfsdf</td>
+        <td th:text="${windengine.bladeposition}">34</td>
+        <td th:text="${windengine.unitBladeposition}">sdfgsdfg</td>
+ </tr>
+</table>
+<div th:replace="footer :: copy"></div>
 </body>
 </html>
