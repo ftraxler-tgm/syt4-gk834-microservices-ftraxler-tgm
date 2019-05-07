@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * 
  * @author Paul Chapman
  */
-@EnableAutoConfiguration
+@SpringBootApplication
 @EnableDiscoveryClient
 public class DataServer {
 
