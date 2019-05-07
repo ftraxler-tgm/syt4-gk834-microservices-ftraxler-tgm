@@ -46,10 +46,10 @@ Das Data Service soll in dieser Übung sehr einfach gestaltet werden und soll da
 ## Bewertung
 Gruppengrösse: 1 Person
 ### Grundanforderungen **überwiegend erfüllt**
-- [ ] Durchlesen des Tutorials "Micro with Spring"
-- [ ] Implementieren des Beispiels "Account Service"
-- [ ] Einzelne Schritte und Komponenten des Beispiels verstehen und im Protokoll dokumentieren
-- [ ] Einbindung des Account Services als "User Service" in die Übung GK8.3.1 Middleware Engineering "Document Oriented Middleware using MongoDB"
+- [x] Durchlesen des Tutorials "Micro with Spring"
+- [x] Implementieren des Beispiels "Account Service"
+- [x] Einzelne Schritte und Komponenten des Beispiels verstehen und im Protokoll dokumentieren
+- [x] Einbindung des Account Services als "User Service" in die Übung GK8.3.1 Middleware Engineering "Document Oriented Middleware using MongoDB"
 - [ ] Beantwortung der Fragestellungen
 ### Grundanforderungen **zur Gänze erfüllt**
 - [ ] Implementieren eines Data Service zur Abfrage der Daten aus dem NoSQL Repository
