@@ -50,10 +50,10 @@ Gruppengrösse: 1 Person
 - [x] Implementieren des Beispiels "Account Service"
 - [x] Einzelne Schritte und Komponenten des Beispiels verstehen und im Protokoll dokumentieren
 - [x] Einbindung des Account Services als "User Service" in die Übung GK8.3.1 Middleware Engineering "Document Oriented Middleware using MongoDB"
-- [ ] Beantwortung der Fragestellungen
+- [x] Beantwortung der Fragestellungen
 ### Grundanforderungen **zur Gänze erfüllt**
-- [ ] Implementieren eines Data Service zur Abfrage der Daten aus dem NoSQL Repository
-- [ ] Erstellung eines Workflows, wo zuerst das User Serive zur Prüfung der Zugangsdaten geprüft werden und danach erst die Abfrage durch das Daten Service stattfindet. Falls Prüfung des Users nicht erfolgreich ist, soll eine Fehlermeldung ausgegeben werden.
+- [x] Implementieren eines Data Service zur Abfrage der Daten aus dem NoSQL Repository
+- [x] Erstellung eines Workflows, wo zuerst das User Serive zur Prüfung der Zugangsdaten geprüft werden und danach erst die Abfrage durch das Daten Service stattfindet. Falls Prüfung des Users nicht erfolgreich ist, soll eine Fehlermeldung ausgegeben werden.
 
 
 ## Fragestellung für Protokoll

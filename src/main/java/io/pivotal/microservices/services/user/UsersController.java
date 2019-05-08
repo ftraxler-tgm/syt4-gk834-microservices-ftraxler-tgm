@@ -64,12 +64,12 @@ public class UsersController {
 			throw new UserNotFoundException(partialName);
 		else {
 			return users;
-		}ar
-
+		}
 	}
 	@RequestMapping("/users/{name}/{password}")
-	public RedirectView localRedirect(@PathVariable("name") String partialName, @PathVariable("password")String password) {
-		RedirectView redirectView = new RedirectView();
+	public String localRedirect(@PathVariable("name") String partialName, @PathVariable("password")String password) {
+
+
 
 		logger.info("user-service byName() invoked: "
 				+ userRepository.getClass().getName() + " for "
@@ -78,14 +78,13 @@ public class UsersController {
 		for (User u:users) {
 			if(u.getPassword().equals(password)){
 				logger.info("Correct password entered");
-				redirectView.setUrl("http://localhost:3333/abfrage");
+				return "true";
 			}else{
 				logger.info("Password not correct!");
 			}
 
 		}
-		redirectView.setUrl("http://localhost:2222/error");
-		return redirectView;
+		return "false";
 	}
 
 }
