@@ -45,7 +45,7 @@
             <artifactId>spring-data-commons</artifactId>
         </dependency>
 
-        
+
         <dependency>
             <!-- Testing starter -->
             <groupId>org.springframework.boot</groupId>
