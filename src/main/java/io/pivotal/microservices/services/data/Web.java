@@ -58,6 +58,7 @@ public class Web {
             try {
                 windengines =r.findWindengineByTimestampAfterAndWindspeedGreaterThanAndPowerLessThan(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2019-03-25 11:00"),50.0,100.0);
                 model.addAttribute("windengines",windengines);
+                logger.info("");
                 login=false;
                 return "abfrage";
             } catch (ParseException e) {
@@ -65,6 +66,7 @@ public class Web {
             }
         }
         login=false;
+        model.addAttribute("exception","Wrong Password Input");
         return "error";
     }
 
