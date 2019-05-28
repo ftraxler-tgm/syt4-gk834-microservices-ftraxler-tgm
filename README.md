@@ -70,6 +70,98 @@ For a list of valid accounts refer to the [data.sql](https://github.com/paulc4/m
 
 ## Implementierung
 
+### Umbenennung  des Account-Services in User-Services.
+
+In Intelij geht das ganz einfach indem man **Strg-Shift-R** und Account mit User ersetzt. Danach sollte man alle Files die User im Namen haben refactoren. Als nächstes ändert wir den Namen des Templates Ordners und von der yml Datei. In der yml Datei ändern wir dann folgendes:
+
+```yaml
+spring:
+  application:
+     name: user-service # Hier habe ich account zu user geändert
+  freemarker:
+    enabled: false        
+  thymeleaf:
+    cache: false           
+    prefix: classpath:/users-server/templates/ # Hier habe ich auch account zu user geändert
+
+```
+
+### Implementierung des Data-Services 
+
+Als ersteres habe ich eine Klasse mit einer Main Methode erstellt welche die Konfiguration lädt und die SpringApplikation startet. Meine Konfigturation zum DataService schaut wie folgt aus.
+
+```yaml
+spring.autoconfigure.exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+#Spring properties
+spring:
+  application:
+    name: data-service  
+  freemarker:
+    enabled: false  
+  thymeleaf:
+    cache: false       
+    prefix: classpath:/data-server/templates/    
+error.path: /error
+
+# HTTP Server
+server.port: 3333   # HTTP (Tomcat) port
+
+# Discovery Server Access
+#  1. DEV ONLY: Reduce the lease renewal interval to speed up registration
+#  2. Define URL of registration server (defaultZone)
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5   # DO NOT DO THIS IN PRODUCTION
+
+# Enable actuator access without security checks - DEVELOPEMENT ONLY
+# management.security.enabled: false   Spring Boot 1.5 property
+management.endpoints.web.exposure.include: '*'
+
+
+```
+
+Dann habe ich mir die Klassen(Windengine,WindengineRepository und Web) in diese Projekt kopiert.
+
+Da ich einen Docker-Container verwendet habe  für die Datenbank musste ich ein VM-Argument übergeben welches die URL für die Datenbank setzt.
+
+```properties
+-Dspring.data.mongodb.uri=mongodb://localhost:32769/windengine
+```
+
+Damit die Abfrage aber auch noch in einem schönen Format ist habe ich einen Thymeleaf table. Dieser macht es möglich, dass ich ein Windengine Liste Objekt übergeben kann und mir daraus eine schöne Tabelle erstellt wird. Das schaut dann wie folgt aus.
+
+```html
+<tr th:each="windengine: ${windengines}">
+        <td th:text="${windengine.windengineID}">1</td>
+        <td th:text="${windengine.timestamp}">dfgkdf</td>
+        <td th:text="${windengine.parkrechnerID}">2</td>
+        .....
+ </tr>
+```
+
+Im Java Code kann man dann mittels **model.addAttribute()** die Liste hinzufügen.
+
+```java
+model.addAttribute("windengines",windengines);
+```
+
+#### Login
+
+Damit diese Tabelle nicht jeder sehen kann verwendet man das User-Service um sich einzuloggen. Das funktioniert wie folgt URL=**https://localhost:3333/username/password/request**
+
+Beim Data-Service wird eine Restabfrage an das User-Service gemacht und wenn das Login erfolgreich war wird TRUE zurückgegeben. Daran erkennt das Data-Service ob das Login erfolgreich war oder nicht. Wenn ja kann den Tabelle freigeben ansonsten wird die Error Page angezeigt.
+
+```java
+restTemplate.getForObject("http://127.0.0.1:2222/users/"+partialName+"/"+password,String.class);
+```
+
+
+
+
 ### Fragestellung für Protokoll
 
 - Was versteht man unter Microservices?
@@ -120,7 +212,7 @@ For a list of valid accounts refer to the [data.sql](https://github.com/paulc4/m
     </root>
     ```
 
-## 
+
 
 ## Quellen
 
